@@ -1,1 +1,75 @@
-<p>tv-show-details works!</p>
+<div class="tv-show-details" *ngIf="tvShow">
+  <!-- Hero Section with Backdrop -->
+  <div class="hero-section" [style.background-image]="'url(' + backdropBase + tvShow.backdrop_path + ')'">
+    <div class="hero-content">
+      <div class="show-poster">
+        <img [src]="imageBase + tvShow.poster_path" [alt]="tvShow.name" />
+      </div>
+      <div class="show-info">
+        <h1>{{ tvShow.name }}</h1>
+        <div class="meta-info">
+          <span class="rating" [style.background-color]="getRatingColor(tvShow.vote_average)">
+            {{ tvShow.vote_average.toFixed(1) }}
+          </span>
+          <span class="year">{{ tvShow.first_air_date | date:'yyyy' }}</span>
+          <span class="seasons">{{ tvShow.number_of_seasons }} seasons</span>
+        </div>
+        <p class="overview">{{ tvShow.overview }}</p>
+        <div class="genres">
+          <span class="genre" *ngFor="let genre of tvShow.genres">{{ genre.name }}</span>
+        </div>
+        <div class="status">
+          <span class="status-badge" [class.ended]="tvShow.status === 'Ended'">
+            {{ tvShow.status }}
+          </span>
+        </div>
+        <button class="wishlist-btn" (click)="toggleWishlist(tvShow)">
+          <span [class.filled]="isInWishlist(tvShow.id)">❤️</span>
+          {{ isInWishlist(tvShow.id) ? 'Remove from Wishlist' : 'Add to Wishlist' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendations Section -->
+  <div class="recommendations-section" *ngIf="recommendations.length > 0">
+    <h2>Recommended TV Shows</h2>
+    <div class="recommendations-grid">
+      <div class="recommendation-card" *ngFor="let rec of recommendations">
+        <img [src]="imageBase + rec.poster_path" [alt]="rec.name" />
+        <div class="card-content">
+          <h3>{{ rec.name }}</h3>
+          <div class="rating" [style.background-color]="getRatingColor(rec.vote_average)">
+            {{ rec.vote_average.toFixed(1) }}
+          </div>
+          <button class="wishlist-btn-small" (click)="toggleWishlist(rec)">
+            <span [class.filled]="isInWishlist(rec.id)">❤️</span>
+          </button>
+          <a [routerLink]="['/tv', rec.id]" class="details-link">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews Section -->
+  <div class="reviews-section" *ngIf="reviews.length > 0">
+    <h2>Reviews</h2>
+    <div class="reviews-list">
+      <div class="review-card" *ngFor="let review of reviews">
+        <div class="review-header">
+          <h3>{{ review.author }}</h3>
+          <span class="rating" [style.background-color]="getRatingColor(review.author_details?.rating || 0)">
+            {{ review.author_details?.rating || 'N/A' }}
+          </span>
+        </div>
+        <p class="review-content">{{ review.content | slice:0:300 }}{{ review.content.length > 300 ? '...' : '' }}</p>
+        <a [href]="review.url" target="_blank" class="read-more">Read Full Review</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading" *ngIf="!tvShow">
+  <div class="spinner"></div>
+  <p>Loading TV show details...</p>
+</div>

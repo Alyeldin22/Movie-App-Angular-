@@ -5,8 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "deploy:vercel": "npm run build:prod && vercel --prod",
+    "deploy:netlify": "npm run build:prod"
   },
   "private": true,
   "dependencies": {
@@ -32,5 +36,17 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.8.2"
-  }
+  },
+  "keywords": [
+    "angular",
+    "movies",
+    "tv-shows",
+    "wishlist",
+    "tmdb",
+    "responsive",
+    "modern-ui"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "description": "A modern Angular application for browsing movies and TV shows with beautiful UI and comprehensive features."
 }

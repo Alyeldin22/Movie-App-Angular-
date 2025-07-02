@@ -48,4 +48,15 @@ getReviews(id: number): Observable<any> {
   });
 }
 
+searchMovies(query: string): Observable<any> {
+  const lang = this.langService.getLang();
+  return this.http.get(`${this.baseUrl}/search/movie`, {
+    params: {
+      api_key: this.apiKey,
+      query: query,
+      language: lang
+    }
+  });
+}
+
 }

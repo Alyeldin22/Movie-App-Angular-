@@ -1,1 +1,56 @@
-<p>wishlist works!</p>
+<div class="wishlist">
+  <div class="wishlist-header">
+    <h1>My Wishlist</h1>
+    <p>Total items: {{ wishlistItems.length }}</p>
+  </div>
+
+  <div class="empty-wishlist" *ngIf="wishlistItems.length === 0">
+    <div class="empty-icon">💔</div>
+    <h2>Your wishlist is empty</h2>
+    <p>Start adding movies and TV shows to your wishlist!</p>
+  </div>
+
+  <!-- Movies Section -->
+  <div class="section" *ngIf="movies.length > 0">
+    <h2>Movies ({{ movies.length }})</h2>
+    <div class="items-grid">
+      <div class="item-card movie-card" *ngFor="let movie of movies">
+        <div class="card-image">
+          <img [src]="imageBase + movie.poster_path" [alt]="movie.title" />
+          <div class="type-badge movie-badge">🎬 Movie</div>
+          <button class="remove-btn" (click)="removeFromWishlist(movie)">
+            ✕
+          </button>
+        </div>
+        <div class="card-content">
+          <h3>{{ movie.title }}</h3>
+          <p class="release-date">{{ getReleaseDate(movie) | date:'yyyy' }}</p>
+          <p class="overview">{{ movie.overview | slice:0:100 }}{{ movie.overview && movie.overview.length > 100 ? '...' : '' }}</p>
+          <a [routerLink]="['/movie', movie.id]" class="details-link">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TV Shows Section -->
+  <div class="section" *ngIf="tvShows.length > 0">
+    <h2>TV Shows ({{ tvShows.length }})</h2>
+    <div class="items-grid">
+      <div class="item-card tv-card" *ngFor="let show of tvShows">
+        <div class="card-image">
+          <img [src]="imageBase + show.poster_path" [alt]="show.title" />
+          <div class="type-badge tv-badge">📺 TV Show</div>
+          <button class="remove-btn" (click)="removeFromWishlist(show)">
+            ✕
+          </button>
+        </div>
+        <div class="card-content">
+          <h3>{{ show.title }}</h3>
+          <p class="release-date">{{ getReleaseDate(show) | date:'yyyy' }}</p>
+          <p class="overview">{{ show.overview | slice:0:100 }}{{ show.overview && show.overview.length > 100 ? '...' : '' }}</p>
+          <a [routerLink]="['/tv', show.id]" class="details-link">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

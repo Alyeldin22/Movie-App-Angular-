@@ -37,7 +37,7 @@ export class MoviesListComponent implements OnInit {
     if (this.wishlistService.isInWishlist(movie.id)) {
       this.wishlistService.removeFromWishlist(movie.id);
     } else {
-      this.wishlistService.addToWishlist(movie);
+      this.wishlistService.addToWishlist(movie, 'movie');
     }
   }
 
@@ -57,5 +57,11 @@ export class MoviesListComponent implements OnInit {
 
   isInWishlist(movieId: number) {
     return this.wishlistService.isInWishlist(movieId);
+  }
+
+  getRatingColor(rating: number): string {
+    if (rating >= 8) return '#4CAF50';
+    if (rating >= 6) return '#FF9800';
+    return '#F44336';
   }
 }
