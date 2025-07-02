@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <div class="logo">
+    <a routerLink="/">🎬 MovieApp</a>
+  </div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/movies">Movies</a></li>
+    <li><a routerLink="/tv">TV Shows</a></li>
+    <li><a routerLink="/wishlist">Wishlist ({{ wishlistCount }})</a></li>
+  </ul>
+
+  <div class="actions">
+    <input [(ngModel)]="searchQuery" placeholder="Search movie..." />
+    <button (click)="search()">🔍</button>
+
+    <select [(ngModel)]="selectedLang" (change)="changeLang($event)">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+      <option value="fr">Français</option>
+      <option value="zh">中文</option>
+    </select>
+  </div>
+</nav>

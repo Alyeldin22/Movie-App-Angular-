@@ -1,0 +1,55 @@
+.movie-detail {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  color: white;
+}
+
+.movie-detail img {
+  width: 250px;
+  border-radius: 8px;
+}
+
+.info {
+  max-width: 600px;
+}
+
+button {
+  margin-top: 1rem;
+  font-size: 16px;
+  background: none;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: white;
+  border-radius: 4px;
+}
+
+button .filled {
+  color: red;
+  font-weight: bold;
+}
+
+.recommendations, .reviews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  width: 150px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.review {
+  background: #222;
+  padding: 1rem;
+  border-radius: 6px;
+  max-width: 600px;
+}

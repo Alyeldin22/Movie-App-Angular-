@@ -1,0 +1,19 @@
+<div class="movies-container">
+  <div class="movie-card" *ngFor="let movie of movies">
+    <img [src]="imageBase + movie.poster_path" alt="{{ movie.title }}" />
+    <h3>{{ movie.title }}</h3>
+
+    <div class="card-actions">
+      <button (click)="toggleWishlist(movie)">
+        <span [class.filled]="isInWishlist(movie.id)">❤️</span>
+      </button>
+      <a [routerLink]="['/movie', movie.id]">Details</a>
+    </div>
+  </div>
+</div>
+
+<div class="pagination-controls">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">⬅️ Prev</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next ➡️</button>
+</div>
