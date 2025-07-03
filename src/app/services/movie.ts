@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService {
-  private apiKey = 'YOUR_API_KEY'; // 🔁 Replace with your actual TMDb API Key
+  private apiKey = 'c0c5c115d1696f7cc01f063389997127';
   private baseUrl = 'https://api.themoviedb.org/3';
 
   constructor(private http: HttpClient, private langService: LanguageService) {}
