@@ -35,19 +35,36 @@
   gap: 0.75rem;
 }
 
-.actions input {
-  padding: 0.4rem 0.75rem;
+:host ::ng-deep .search-input {
+  max-width: 150px;
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
-  max-width: 150px;
 }
 
-.actions button {
-  background-color: #ffe000;
+:host ::ng-deep .p-button-text {
+  background: transparent;
   border: none;
-  font-size: 1rem;
-  cursor: pointer;
+  color: #333;
+}
+
+:host ::ng-deep .p-button-text:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+:host ::ng-deep .p-button-danger {
+  background: #e74c3c;
+  border-color: #e74c3c;
+}
+
+:host ::ng-deep .p-button-danger:hover {
+  background: #c0392b;
+  border-color: #c0392b;
+}
+
+:host ::ng-deep .p-button-sm {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
 }
 
 .actions select {
@@ -56,6 +73,91 @@
   border: 1px solid #ccc;
   background: white;
   cursor: pointer;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #667eea;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.provider-badge {
+  background: #667eea;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.auth-link {
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.auth-link:not(.register) {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.auth-link:not(.register):hover {
+  background: rgba(102, 126, 234, 0.2);
+}
+
+.auth-link.register {
+  background: #667eea;
+  color: white;
+}
+
+.auth-link.register:hover {
+  background: #5a6fd8;
 }
 
 /* Responsive Design */
@@ -77,16 +179,29 @@
     justify-content: space-between;
   }
 
-  .actions input {
+  :host ::ng-deep .search-input {
     flex: 1;
     min-width: 120px;
   }
 
-  .actions button {
-    flex-shrink: 0;
-  }
-
   .actions select {
     margin-left: auto;
+  }
+
+  .user-section {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .auth-link {
+    text-align: center;
+    width: 100%;
   }
 }

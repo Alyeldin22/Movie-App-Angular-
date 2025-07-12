@@ -1,0 +1,87 @@
+<div class="auth-container">
+  <p-card styleClass="auth-card">
+    <ng-template pTemplate="header">
+      <div class="auth-header">
+        <h1>{{ translate('auth.createAccount') }}</h1>
+        <p>{{ translate('auth.joinJourney') }}</p>
+      </div>
+    </ng-template>
+
+    <form (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="form-group">
+        <label for="name" class="form-label">{{ translate('form.fullName') }}</label>
+        <span class="p-input-icon-left">
+          <i class="pi pi-user"></i>
+          <input 
+            pInputText 
+            id="name" 
+            [(ngModel)]="credentials.name" 
+            name="name" 
+            [placeholder]="translate('placeholder.fullName')"
+            required
+            class="w-full"
+          />
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">{{ translate('form.email') }}</label>
+        <span class="p-input-icon-left">
+          <i class="pi pi-envelope"></i>
+          <input 
+            pInputText 
+            id="email" 
+            [(ngModel)]="credentials.email" 
+            name="email" 
+            [placeholder]="translate('placeholder.email')"
+            required
+            class="w-full"
+          />
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="form-label">{{ translate('form.password') }}</label>
+        <p-password 
+          id="password" 
+          [(ngModel)]="credentials.password" 
+          name="password" 
+          [placeholder]="translate('placeholder.password')"
+          [toggleMask]="true"
+          [feedback]="true"
+          required
+          styleClass="w-full"
+        ></p-password>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword" class="form-label">{{ translate('form.confirmPassword') }}</label>
+        <p-password 
+          id="confirmPassword" 
+          [(ngModel)]="credentials.confirmPassword" 
+          name="confirmPassword" 
+          [placeholder]="translate('placeholder.confirmPassword')"
+          [toggleMask]="true"
+          [feedback]="false"
+          required
+          styleClass="w-full"
+        ></p-password>
+      </div>
+
+      <p-button 
+        type="submit" 
+        [loading]="isLoading"
+        [label]="translate('btn.createAccount')"
+        icon="pi pi-user-plus"
+        styleClass="w-full"
+        [disabled]="isLoading"
+      ></p-button>
+    </form>
+
+    <ng-template pTemplate="footer">
+      <div class="auth-footer">
+        <p>{{ translate('msg.alreadyHaveAccount') }} <a (click)="goToLogin()" class="link">{{ translate('link.signIn') }}</a></p>
+      </div>
+    </ng-template>
+  </p-card>
+</div> 

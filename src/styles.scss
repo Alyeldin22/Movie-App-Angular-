@@ -1,1 +1,107 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #000000;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+/* RTL Support for Arabic */
+body[dir="rtl"] {
+  text-align: right;
+}
+
+body[dir="rtl"] .p-input-icon-left {
+  position: relative;
+}
+
+body[dir="rtl"] .p-input-icon-left i {
+  position: absolute;
+  right: 12px;
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+body[dir="rtl"] .p-input-icon-left input {
+  padding-left: 15px !important;
+  padding-right: 40px !important;
+}
+
+/* Arabic font support */
+body[dir="rtl"] {
+  font-family: 'Segoe UI', 'Arial', 'Tahoma', sans-serif;
+}
+
+/* RTL specific adjustments */
+body[dir="rtl"] .auth-footer,
+body[dir="rtl"] .auth-header {
+  text-align: center;
+}
+
+body[dir="rtl"] .forgot-link {
+  text-align: left;
+}
+
+body[dir="rtl"] .user-info {
+  flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .actions {
+  flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+/* Ensure cards have proper contrast */
+:host ::ng-deep .p-card {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 1px solid #333 !important;
+}
+
+:host ::ng-deep .p-card-body {
+  background: #1a1a1a !important;
+}
+
+:host ::ng-deep .p-card-header {
+  background: #1a1a1a !important;
+}
+
+:host ::ng-deep .p-card-footer {
+  background: #1a1a1a !important;
+}
+
+/* Global dark theme adjustments */
+:host ::ng-deep .p-inputtext {
+  background: #2a2a2a !important;
+  border-color: #444 !important;
+  color: #ffffff !important;
+}
+
+:host ::ng-deep .p-inputtext:focus {
+  border-color: #667eea !important;
+  background: #333 !important;
+}
+
+:host ::ng-deep .p-password .p-inputtext {
+  background: #2a2a2a !important;
+  border-color: #444 !important;
+  color: #ffffff !important;
+}
+
+:host ::ng-deep .p-password .p-inputtext:focus {
+  border-color: #667eea !important;
+  background: #333 !important;
+}

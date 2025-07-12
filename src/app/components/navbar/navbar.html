@@ -4,20 +4,54 @@
   </div>
 
   <ul class="nav-links">
-    <li><a routerLink="/movies">Movies</a></li>
-    <li><a routerLink="/tv">TV Shows</a></li>
-    <li><a routerLink="/wishlist">Wishlist ({{ wishlistCount }})</a></li>
+    <li><a routerLink="/movies">{{ translate('nav.movies') }}</a></li>
+    <li><a routerLink="/tv">{{ translate('nav.tvShows') }}</a></li>
+    <li><a routerLink="/wishlist">{{ translate('nav.wishlist') }} ({{ wishlistCount }})</a></li>
   </ul>
 
   <div class="actions">
-    <input [(ngModel)]="searchQuery" placeholder="Search movie..." />
-    <button (click)="search()">🔍</button>
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input 
+        pInputText 
+        [(ngModel)]="searchQuery" 
+        [placeholder]="translate('placeholder.searchMovie')" 
+        (keyup.enter)="search()"
+        class="search-input"
+      />
+    </span>
+    <p-button 
+      icon="pi pi-search" 
+      (onClick)="search()"
+      styleClass="p-button-text"
+    ></p-button>
 
     <select [(ngModel)]="selectedLang" (change)="changeLang($event)">
-      <option value="en">English</option>
-      <option value="ar">العربية</option>
-      <option value="fr">Français</option>
-      <option value="zh">中文</option>
+      <option value="en">{{ translate('lang.english') }}</option>
+      <option value="ar">{{ translate('lang.arabic') }}</option>
     </select>
+
+    <div class="user-section" *ngIf="currentUser$ | async as user; else authButtons">
+      <div class="user-info">
+        <img *ngIf="user.photoUrl" [src]="user.photoUrl" [alt]="user.name" class="user-avatar" />
+        <div *ngIf="!user.photoUrl" class="user-avatar-placeholder">
+          {{ user.name.charAt(0).toUpperCase() }}
+        </div>
+        <span class="user-name">{{ translate('nav.welcome') }}, {{ user.name }}</span>
+        <span *ngIf="user.provider && user.provider !== 'email'" class="provider-badge">{{ user.provider }}</span>
+      </div>
+      <p-button 
+        [label]="translate('nav.logout')" 
+        icon="pi pi-sign-out"
+        (onClick)="logout()"
+        styleClass="p-button-danger p-button-sm"
+      ></p-button>
+    </div>
+    <ng-template #authButtons>
+      <div class="auth-buttons">
+        <a routerLink="/login" class="auth-link">{{ translate('nav.login') }}</a>
+        <a routerLink="/register" class="auth-link register">{{ translate('nav.register') }}</a>
+      </div>
+    </ng-template>
   </div>
 </nav>

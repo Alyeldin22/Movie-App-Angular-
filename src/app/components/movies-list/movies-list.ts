@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MovieService } from '../../services/movie';
 import { WishlistService } from '../../services/wishlist';
+import { LanguageService } from '../../services/language';
 import { RouterModule } from '@angular/router';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-movies-list',
   templateUrl: './movies-list.html',
   styleUrls: ['./movies-list.scss'],
   standalone: true,
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule, CardModule, ButtonModule]
 })
 export class MoviesListComponent implements OnInit {
   movies: any[] = [];
@@ -19,7 +22,8 @@ export class MoviesListComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
-    private wishlistService: WishlistService
+    private wishlistService: WishlistService,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit(): void {
@@ -63,5 +67,10 @@ export class MoviesListComponent implements OnInit {
     if (rating >= 8) return '#4CAF50';
     if (rating >= 6) return '#FF9800';
     return '#F44336';
+  }
+
+  // Translation helper method
+  translate(key: string): string {
+    return this.languageService.translate(key);
   }
 }

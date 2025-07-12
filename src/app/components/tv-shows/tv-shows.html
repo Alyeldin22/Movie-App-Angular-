@@ -1,34 +1,57 @@
 <div class="tv-shows-container">
   <div class="page-header">
-    <h1>Popular TV Shows</h1>
-    <p>Discover the most popular TV shows</p>
+    <h1>{{ translate('tv.popular') }}</h1>
+    <p>{{ translate('tv.discover') }}</p>
   </div>
 
   <div class="shows-grid">
-    <div class="show-card" *ngFor="let show of tvShows">
-      <div class="card-image">
-        <img [src]="imageBase + show.poster_path" [alt]="show.name" />
-        <button class="wishlist-btn" (click)="toggleWishlist(show)">
-          <span [class.filled]="isInWishlist(show.id)">❤️</span>
-        </button>
-      </div>
-      <div class="card-content">
-        <h3>{{ show.name }}</h3>
-        <div class="meta-info">
-          <span class="rating" [style.background-color]="getRatingColor(show.vote_average)">
-            {{ show.vote_average.toFixed(1) }}
-          </span>
-          <span class="year">{{ show.first_air_date | date:'yyyy' }}</span>
+    <p-card *ngFor="let show of tvShows" styleClass="show-card">
+      <ng-template pTemplate="header">
+        <div class="card-image">
+          <img [src]="imageBase + show.poster_path" [alt]="show.name" />
+          <p-button 
+            [icon]="isInWishlist(show.id) ? 'pi pi-heart-fill' : 'pi pi-heart'"
+            (onClick)="toggleWishlist(show)"
+            styleClass="wishlist-btn"
+            [class.filled]="isInWishlist(show.id)"
+          ></p-button>
         </div>
-        <p class="overview">{{ show.overview | slice:0:100 }}{{ show.overview.length > 100 ? '...' : '' }}</p>
-        <a [routerLink]="['/tv', show.id]" class="details-link">View Details</a>
-      </div>
-    </div>
+      </ng-template>
+
+      <ng-template pTemplate="content">
+        <div class="card-content">
+          <h3>{{ show.name }}</h3>
+          <div class="meta-info">
+            <span class="rating" [style.background-color]="getRatingColor(show.vote_average)">
+              {{ show.vote_average.toFixed(1) }}
+            </span>
+            <span class="year">{{ show.first_air_date | date:'yyyy' }}</span>
+          </div>
+          <p class="overview">{{ show.overview | slice:0:100 }}{{ show.overview.length > 100 ? '...' : '' }}</p>
+          <p-button 
+            [routerLink]="['/tv', show.id]" 
+            [label]="translate('btn.viewDetails')"
+            icon="pi pi-external-link"
+            styleClass="p-button-outlined w-full"
+          ></p-button>
+        </div>
+      </ng-template>
+    </p-card>
   </div>
 
   <div class="pagination-controls">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">⬅️ Prev</button>
-    <span>Page {{ currentPage }} of {{ totalPages }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next ➡️</button>
+    <p-button 
+      icon="pi pi-chevron-left" 
+      (onClick)="prevPage()" 
+      [disabled]="currentPage === 1"
+      styleClass="p-button-outlined"
+    ></p-button>
+    <span>{{ translate('tv.page') }} {{ currentPage }} {{ translate('tv.of') }} {{ totalPages }}</span>
+    <p-button 
+      icon="pi pi-chevron-right" 
+      (onClick)="nextPage()" 
+      [disabled]="currentPage === totalPages"
+      styleClass="p-button-outlined"
+    ></p-button>
   </div>
 </div>

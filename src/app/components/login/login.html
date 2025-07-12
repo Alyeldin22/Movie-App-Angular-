@@ -1,0 +1,58 @@
+<div class="auth-container">
+  <p-card styleClass="auth-card">
+    <ng-template pTemplate="header">
+      <div class="auth-header">
+        <h1>{{ translate('auth.welcomeBack') }}</h1>
+        <p>{{ translate('auth.signInContinue') }}</p>
+      </div>
+    </ng-template>
+
+    <form (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="form-group">
+        <label for="email" class="form-label">{{ translate('form.email') }}</label>
+        <span class="p-input-icon-left">
+          <i class="pi pi-envelope"></i>
+          <input 
+            pInputText 
+            id="email" 
+            [(ngModel)]="credentials.email" 
+            name="email" 
+            [placeholder]="translate('placeholder.email')"
+            required
+            class="w-full"
+          />
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="form-label">{{ translate('form.password') }}</label>
+        <p-password 
+          id="password" 
+          [(ngModel)]="credentials.password" 
+          name="password" 
+          [placeholder]="translate('placeholder.password')"
+          [toggleMask]="true"
+          [feedback]="false"
+          required
+          styleClass="w-full"
+        ></p-password>
+        <a (click)="goToForgotPassword()" class="link forgot-link">{{ translate('link.forgotPassword') }}</a>
+      </div>
+
+      <p-button 
+        type="submit" 
+        [loading]="isLoading"
+        [label]="translate('btn.signIn')"
+        icon="pi pi-sign-in"
+        styleClass="w-full"
+        [disabled]="isLoading"
+      ></p-button>
+    </form>
+
+    <ng-template pTemplate="footer">
+      <div class="auth-footer">
+        <p>{{ translate('msg.dontHaveAccount') }} <a (click)="goToRegister()" class="link">{{ translate('link.signUp') }}</a></p>
+      </div>
+    </ng-template>
+  </p-card>
+</div> 

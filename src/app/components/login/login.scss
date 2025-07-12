@@ -1,0 +1,237 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  padding: 20px;
+}
+
+:host ::ng-deep .auth-card {
+  width: 100%;
+  max-width: 400px;
+  animation: slideUp 0.6s ease-out;
+}
+
+:host ::ng-deep .auth-card .p-card {
+  background: #1a1a1a;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid #333;
+  backdrop-filter: blur(10px);
+}
+
+:host ::ng-deep .auth-card .p-card-body {
+  padding: 40px;
+  background: #1a1a1a;
+}
+
+:host ::ng-deep .auth-card .p-card-header {
+  padding: 0 0 30px 0;
+  border-bottom: none;
+  background: #1a1a1a;
+}
+
+:host ::ng-deep .auth-card .p-card-footer {
+  padding: 30px 0 0 0;
+  border-top: 1px solid #333;
+  background: #1a1a1a;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.auth-header p {
+  color: #cccccc;
+  font-size: 1rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+:host ::ng-deep .p-inputtext {
+  padding: 15px 15px 15px 40px;
+  border: 2px solid #444;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #2a2a2a;
+  color: #ffffff;
+  width: 100%;
+}
+
+:host ::ng-deep .p-inputtext:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #333;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+:host ::ng-deep .p-password {
+  width: 100%;
+}
+
+:host ::ng-deep .p-password .p-inputtext {
+  padding: 15px;
+  border: 2px solid #444;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #2a2a2a;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-password .p-inputtext:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #333;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+:host ::ng-deep .p-password .p-password-toggle {
+  color: #667eea;
+}
+
+:host ::ng-deep .p-button {
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+:host ::ng-deep .p-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+:host ::ng-deep .p-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+:host ::ng-deep .p-divider .p-divider-content {
+  background: #ffffff;
+  padding: 0 15px;
+}
+
+:host ::ng-deep .p-tag {
+  background: #667eea;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.auth-footer {
+  text-align: center;
+}
+
+.auth-footer p {
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+.link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.forgot-link {
+  display: block;
+  text-align: right;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  color: #667eea;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.forgot-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 15px;
+  }
+
+  :host ::ng-deep .auth-card .p-card-body {
+    padding: 30px 25px;
+  }
+
+  .auth-header h1 {
+    font-size: 1.75rem;
+  }
+
+  :host ::ng-deep .p-inputtext {
+    padding: 12px 12px 12px 35px;
+  }
+
+  :host ::ng-deep .p-password .p-inputtext {
+    padding: 12px;
+  }
+
+  :host ::ng-deep .p-button {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  :host ::ng-deep .auth-card .p-card-body {
+    padding: 25px 20px;
+  }
+
+  .auth-header h1 {
+    font-size: 1.5rem;
+  }
+} 

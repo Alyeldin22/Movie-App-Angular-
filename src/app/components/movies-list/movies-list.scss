@@ -28,18 +28,30 @@
   margin-bottom: 40px;
 }
 
-.movie-card {
-  background: white;
+:host ::ng-deep .movie-card {
+  transition: all 0.3s ease;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
 }
 
-.movie-card:hover {
+:host ::ng-deep .movie-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+:host ::ng-deep .movie-card .p-card {
+  background: white;
+  border: none;
+  border-radius: 15px;
+}
+
+:host ::ng-deep .movie-card .p-card-body {
+  padding: 0;
+}
+
+:host ::ng-deep .movie-card .p-card-content {
+  padding: 20px;
 }
 
 .card-image {
@@ -54,33 +66,48 @@
   transition: transform 0.3s ease;
 }
 
-.movie-card:hover .card-image img {
+:host ::ng-deep .movie-card:hover .card-image img {
   transform: scale(1.05);
 }
 
-.wishlist-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
-  color: white;
-  font-size: 20px;
-  padding: 8px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
+:host ::ng-deep .wishlist-btn {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: none !important;
+  color: white !important;
+  font-size: 20px !important;
+  padding: 8px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+  min-width: auto !important;
+  width: 40px !important;
+  height: 40px !important;
 }
 
-.wishlist-btn:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: scale(1.1);
+:host ::ng-deep .wishlist-btn:hover {
+  background: rgba(0, 0, 0, 0.9) !important;
+  transform: scale(1.1) !important;
 }
 
-.wishlist-btn .filled {
-  color: #e74c3c;
-  filter: drop-shadow(0 0 5px rgba(231, 76, 60, 0.5));
+:host ::ng-deep .wishlist-btn.filled {
+  color: #e74c3c !important;
+  animation: heartBeat 0.3s ease-in-out;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .card-content {
@@ -126,20 +153,17 @@
   overflow: hidden;
 }
 
-.details-link {
-  display: inline-block;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+:host ::ng-deep .p-button-outlined {
+  border: 2px solid #ff6b6b !important;
+  color: #ff6b6b !important;
+  background: transparent !important;
 }
 
-.details-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+:host ::ng-deep .p-button-outlined:hover {
+  background: #ff6b6b !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
 .pagination-controls {
@@ -150,26 +174,10 @@
   margin-top: 40px;
 }
 
-.pagination-controls button {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.pagination-controls button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.pagination-controls button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
+:host ::ng-deep .pagination-controls .p-button {
+  min-width: auto !important;
+  width: 40px !important;
+  height: 40px !important;
 }
 
 .pagination-controls span {
